@@ -1,0 +1,5 @@
+#!/bin/sh
+# 커밋할 때마다 현재 브랜치를 origin 으로 자동 푸시
+branch=$(git rev-parse --abbrev-ref HEAD)
+[ "$branch" = "HEAD" ] && exit 0
+git push -u origin "$branch" || echo "[post-commit] 자동 푸시 실패 - 수동으로 git push 하세요"
